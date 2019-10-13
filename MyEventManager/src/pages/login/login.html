@@ -1,0 +1,40 @@
+<ion-content>
+  <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+    <h1>EventPlanner</h1>
+    <ion-card-header color="primary">
+      LOGIN
+    </ion-card-header>
+    <ion-list no-lines>
+      <ion-item>
+        <ion-label stacked>Email</ion-label>
+        <ion-input formControlName="email" type="email" placeholder="Your email address" [class.invalid]="!loginForm.controls.email.valid && loginForm.controls.email.dirty"></ion-input>
+      </ion-item>
+      <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid  && loginForm.controls.email.dirty">
+        <p>Please enter a valid email.</p>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Password</ion-label>
+        <ion-input formControlName="password" type="password" placeholder="Your password" [class.invalid]="!loginForm.controls.password.valid && loginForm.controls.password.dirty"></ion-input>
+      </ion-item>
+      <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid  && loginForm.controls.password.dirty">
+        <p>Your password needs more than 6 characters.</p>
+      </ion-item>
+      <button ion-button class="loginbut" outline color="primary" type="submit" [disabled]="!loginForm.valid">
+      Login
+    </button>
+    </ion-list>
+
+  </form>
+  
+<h6>Or</h6>
+  
+
+  <button ion-button color="danger" class="but" outline (click)="goToSignup()">
+    Create a new account
+  </button>
+
+  <button ion-button color="danger" class="but" outline (click)="goToResetPassword()">
+    I forgot my password
+    </button>
+
+</ion-content>
